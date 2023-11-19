@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:personal_portfolio/screens/home/homefinal.dart';
 
 import 'package:personal_portfolio/screens/home/homescreen.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
               bodySmall: TextStyle(fontFamily: "PlusJakartaSans")),
           useMaterial3: true,
         ),
-        home: const WellcomeScreen());
+        home: const HomeFinal());
   }
 }
 

@@ -41,6 +41,7 @@ dependencies:
   gap: ^3.0.1
   google_fonts: ^6.1.0
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -67,6 +68,7 @@ flutter:
   assets:
     - assets/vectors/
     - assets/animations/
+    - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
