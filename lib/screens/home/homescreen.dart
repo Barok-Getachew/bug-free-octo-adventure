@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      height: 975,
+      height: size.height,
       color: const Color.fromRGBO(39, 50, 62, 1),
       child: Stack(
         children: [
@@ -153,16 +153,19 @@ class HomeScreen extends StatelessWidget {
                 height: size.height * 0.9,
                 width: size.width / 2,
                 color: Colors.transparent,
-                child: Center(
-                    child: SvgPicture.asset(
-                  'vectors/code.svg',
-                  height: 700,
-                  fit: BoxFit.cover,
-                )
+                child: Padding(
+                  padding: EdgeInsets.only(right: size.height * 0.02),
+                  child: Center(
+                      child: SvgPicture.asset(
+                    'vectors/code.svg',
+                    height: 700,
+                    fit: BoxFit.cover,
+                  )
 
-                    // Lottie.asset("assets/animations/a.json")
+                      // Lottie.asset("assets/animations/a.json")
 
-                    ),
+                      ),
+                ),
               )
             ],
           ),

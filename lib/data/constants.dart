@@ -7,4 +7,5 @@ class Constants {
   static const about =
       ''' Hello, I'm Biruk Getachew, a passionate mobile app developer and designer based in [Your Location]. With [X] years of experience, I'm dedicated to creating user-centric, visually appealing mobile applications.''';
   static const myService = "My Services";
+  static const portfolio = "Portfolio";
 }

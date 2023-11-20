@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:personal_portfolio/data/constants.dart';
 import 'package:personal_portfolio/screens/aboutme/title.dart';
 
@@ -12,13 +13,13 @@ class MyServices extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Container(
-        height: 975,
+        height: size.height,
         width: double.infinity,
         color: const Color.fromRGBO(39, 50, 62, 1),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Gap(30),
+            Gap(size.height * 0.05),
             const TitleA(
               title: Constants.myService,
             ),
@@ -39,8 +40,17 @@ class MyServices extends StatelessWidget {
                             width: 400,
                             height: 300,
                             color: Colors.transparent,
+                            child: const Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                TextTitle(title: "UI/UX Design"),
+                                TextDescriptionL(
+                                    description:
+                                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt doloremque excepturi sit odit impedit, voluptas.")
+                              ],
+                            ),
                           ),
-                          Gap(20),
+                          Gap(size.height * 0.03),
                           SvgPicture.asset(
                             "vectors/icon1.svg",
                           )
@@ -54,14 +64,23 @@ class MyServices extends StatelessWidget {
                             width: 400,
                             height: 300,
                             color: Colors.transparent,
+                            child: const Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                TextTitle(title: "UI/UX Design"),
+                                TextDescriptionL(
+                                    description:
+                                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt doloremque excepturi sit odit impedit, voluptas.")
+                              ],
+                            ),
                           ),
-                          Gap(20),
+                          Gap(size.height * 0.03),
                           SvgPicture.asset("vectors/icon1.svg")
                         ],
                       )
                     ],
                   ),
-                  Gap(20),
+                  Gap(size.height * 0.03),
                   SizedBox(
                     height: 700,
                     child: Image.asset(
@@ -69,7 +88,7 @@ class MyServices extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  Gap(20),
+                  Gap(size.height * 0.03),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -77,24 +96,42 @@ class MyServices extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SvgPicture.asset("vectors/icon1.svg"),
-                          Gap(20),
+                          Gap(size.height * 0.03),
                           Container(
                             width: 400,
                             height: 300,
                             color: Colors.transparent,
+                            child: const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TextTitle(title: "UI/UX Design"),
+                                TextDescription(
+                                    description:
+                                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt doloremque excepturi sit odit impedit, voluptas.")
+                              ],
+                            ),
                           ),
                         ],
                       ),
-                      Gap(100),
+                      Gap(size.height * 0.08),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SvgPicture.asset("vectors/icon1.svg"),
-                          Gap(20),
+                          Gap(size.height * 0.03),
                           Container(
                             width: 400,
                             height: 300,
                             color: Colors.transparent,
+                            child: const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TextTitle(title: "UI/UX Design"),
+                                TextDescription(
+                                    description:
+                                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt doloremque excepturi sit odit impedit, voluptas.")
+                              ],
+                            ),
                           ),
                         ],
                       )
@@ -105,5 +142,50 @@ class MyServices extends StatelessWidget {
             )
           ],
         ));
+  }
+}
+
+class TextTitle extends StatelessWidget {
+  final String title;
+  const TextTitle({super.key, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: GoogleFonts.plusJakartaSans(
+          fontSize: 20, color: Colors.white, fontWeight: FontWeight.w500),
+      textAlign: TextAlign.left,
+    );
+  }
+}
+
+class TextDescription extends StatelessWidget {
+  final String description;
+  const TextDescription({super.key, required this.description});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      description,
+      style: GoogleFonts.plusJakartaSans(
+          fontSize: 14, color: Colors.white, fontWeight: FontWeight.w300),
+      textAlign: TextAlign.left,
+    );
+  }
+}
+
+class TextDescriptionL extends StatelessWidget {
+  final String description;
+  const TextDescriptionL({super.key, required this.description});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      description,
+      style: GoogleFonts.plusJakartaSans(
+          fontSize: 14, color: Colors.white, fontWeight: FontWeight.w300),
+      textAlign: TextAlign.right,
+    );
   }
 }

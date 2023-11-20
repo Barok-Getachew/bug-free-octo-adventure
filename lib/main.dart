@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:personal_portfolio/screens/home/homefinal.dart';
 
 import 'package:personal_portfolio/screens/home/homescreen.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent, // Set status bar color to transparent
+  ));
+
   runApp(const MyApp());
 }
 
@@ -24,7 +29,7 @@ class MyApp extends StatelessWidget {
               bodySmall: TextStyle(fontFamily: "PlusJakartaSans")),
           useMaterial3: true,
         ),
-        home: const HomeFinal());
+        home: const WellcomeScreen());
   }
 }
 
@@ -40,14 +45,14 @@ class _WellcomeScreenState extends State<WellcomeScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(milliseconds: 3)).then((value) {
-      Get.to(const HomeScreen());
+      Get.to(const HomeFinal());
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purple.shade100,
+      // backgroundColor: Colors.purple.shade100,
       body: const Center(
         child: CircularProgressIndicator(),
       ),

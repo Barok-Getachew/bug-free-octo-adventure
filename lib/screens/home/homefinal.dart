@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:personal_portfolio/Portfolio/portfolio.dart';
 import 'package:personal_portfolio/screens/aboutme/aboutme.dart';
 import 'package:personal_portfolio/screens/home/homescreen.dart';
 import 'package:personal_portfolio/screens/myservices/myservices.dart';
@@ -17,32 +19,46 @@ class _HomeFinalState extends State<HomeFinal> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(0, 0, 0, 0),
-        elevation: 0,
-        leading: const Text("Logo"),
-        actions: const [
-          ElevatedButtons(text: 'Home'),
-          Gap(30),
-          ElevatedButtons(text: 'AboutMe'),
-          Gap(30),
-          ElevatedButtons(text: 'MyServices'),
-          Gap(30),
-          ElevatedButtons(text: 'Portfolio'),
-          Gap(30),
-          ElevatedButtons(text: 'ContactMe'),
-          Gap(50),
+      extendBodyBehindAppBar: true,
+      body: Stack(
+        children: [
+          Scrollbar(
+            thickness: 10,
+            interactive: false,
+            trackVisibility: true,
+            controller: controller,
+            child: ListView(
+              children: const [
+                HomeScreen(),
+                AboutMe(),
+                MyServices(),
+                Portfolio()
+              ],
+            ),
+          ),
+          Positioned(
+              top: size.height * 0.02,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Gap(size.width * 0.1),
+                  Text("Hello"),
+                  Gap(size.width * 0.55),
+                  const Row(
+                    children: [
+                      ElevatedButtons(text: "Home"),
+                      ElevatedButtons(text: "AbouteMe"),
+                      ElevatedButtons(text: "Services"),
+                      ElevatedButtons(text: "Portfolio"),
+                      ElevatedButtons(text: "ContactMe"),
+                    ],
+                  ),
+                  Gap(size.width * 0.5),
+                ],
+              )),
         ],
-      ),
-      body: Scrollbar(
-        thickness: 10,
-        interactive: false,
-        trackVisibility: true,
-        controller: controller,
-        child: ListView(
-          children: const [HomeScreen(), AboutMe(), MyServices()],
-        ),
       ),
     );
   }
@@ -56,7 +72,7 @@ class ElevatedButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      width: size.height * 0.115,
+      width: size.height * 0.13,
       height: size.height * 0.035,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
       child: MaterialButton(
@@ -67,7 +83,7 @@ class ElevatedButtons extends StatelessWidget {
         child: Text(
           text,
           style: GoogleFonts.plusJakartaSans(
-              fontSize: 20, fontWeight: FontWeight.w500),
+              fontSize: 20, color: Colors.white, fontWeight: FontWeight.w500),
         ),
       ),
     );

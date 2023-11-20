@@ -7,9 +7,10 @@ class TitleA extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       color: Colors.transparent,
-      width: 400,
+      width: size.width * 0.17,
       child: Stack(
         children: [
           Container(
