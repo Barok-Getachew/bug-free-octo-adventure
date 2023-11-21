@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:lottie/lottie.dart';
 import 'package:personal_portfolio/data/constants.dart';
 
 import 'package:personal_portfolio/screens/home/circularcontanr.dart';
@@ -156,15 +157,11 @@ class HomeScreen extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.only(right: size.height * 0.02),
                   child: Center(
-                      child: SvgPicture.asset(
-                    'vectors/code.svg',
-                    height: 700,
-                    fit: BoxFit.cover,
-                  )
+                    child: Lottie.asset("assets/animation/3.json",
+                        height: size.height * 0.5),
 
-                      // Lottie.asset("assets/animations/a.json")
-
-                      ),
+                    // Lottie.asset("assets/animations/a.json")
+                  ),
                 ),
               )
             ],

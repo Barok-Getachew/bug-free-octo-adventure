@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:personal_portfolio/Portfolio/portfolio.dart';
 import 'package:personal_portfolio/screens/aboutme/aboutme.dart';
+import 'package:personal_portfolio/screens/contactme/contactMe.dart';
 import 'package:personal_portfolio/screens/home/homescreen.dart';
 import 'package:personal_portfolio/screens/myservices/myservices.dart';
 
@@ -34,7 +35,8 @@ class _HomeFinalState extends State<HomeFinal> {
                 HomeScreen(),
                 AboutMe(),
                 MyServices(),
-                Portfolio()
+                Portfolio(),
+                ContactMe(),
               ],
             ),
           ),

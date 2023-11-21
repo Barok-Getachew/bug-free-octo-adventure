@@ -64,7 +64,7 @@ class _PortfolioState extends State<Portfolio> {
               enlargeFactor: 0.2,
               enlargeCenterPage: true,
               reverse: false,
-              autoPlay: true,
+              autoPlay: false,
               autoPlayCurve: Curves.fastOutSlowIn,
               onPageChanged: (index, reason) {
                 setState(() {
