@@ -29,6 +29,8 @@ class HomeScreen extends StatelessWidget {
               transform: Matrix4.skew(9, 10),
               child: SvgPicture.asset(
                 'vectors/blob.svg',
+                colorFilter: const ColorFilter.mode(
+                    Color.fromRGBO(39, 50, 62, 0.535), BlendMode.darken),
                 width: size.width * 1.2,
                 height: size.height * 1.4,
                 fit: BoxFit.cover,
@@ -96,25 +98,25 @@ class HomeScreen extends StatelessWidget {
                       Row(
                         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          CircularContainer(
+                          BigCircularContainer(
                             screenWidth: size.width,
                             screenHeight: size.height,
                             iconUrl: '',
                           ),
                           Gap(size.height * 0.023),
-                          CircularContainer(
+                          BigCircularContainer(
                             screenWidth: size.width,
                             screenHeight: size.height,
                             iconUrl: '',
                           ),
                           Gap(size.height * 0.023),
-                          CircularContainer(
+                          BigCircularContainer(
                             screenWidth: size.width,
                             screenHeight: size.height,
                             iconUrl: '',
                           ),
                           Gap(size.height * 0.023),
-                          CircularContainer(
+                          BigCircularContainer(
                             screenWidth: size.width,
                             screenHeight: size.height,
                             iconUrl: '',
@@ -157,8 +159,9 @@ class HomeScreen extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.only(right: size.height * 0.02),
                   child: Center(
-                    child: Lottie.asset("assets/animation/3.json",
-                        height: size.height * 0.5),
+                    child: Lottie.network(
+                        "https://lottie.host/ed85a311-190a-4083-970d-11d2fa8537ec/oDCXu5OiS8.json",
+                        height: size.height * 0.8),
 
                     // Lottie.asset("assets/animations/a.json")
                   ),

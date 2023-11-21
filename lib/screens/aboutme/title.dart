@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TitleA extends StatelessWidget {
+  final double fontSize;
   final String title;
-  const TitleA({super.key, required this.title});
+  const TitleA({super.key, required this.title, required this.fontSize});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
       color: Colors.transparent,
-      width: size.width * 0.17,
+      width: size.width * 0.2,
       child: Stack(
         children: [
           Container(
-            height: 80,
-            width: 70,
+            height: size.height * 0.08,
+            width: size.width * 0.1,
             decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: LinearGradient(colors: [
@@ -26,14 +27,13 @@ class TitleA extends StatelessWidget {
                 ])),
           ),
           Positioned(
-            top: 15,
-            left: 45,
-            right: -30,
+            top: size.height * 0.007,
+            left: size.width * 0.05,
             bottom: 0,
             child: Text(
               title,
               style: GoogleFonts.plusJakartaSans(
-                  fontSize: 45,
+                  fontSize: fontSize,
                   fontWeight: FontWeight.w800,
                   color: Colors.white),
             ),

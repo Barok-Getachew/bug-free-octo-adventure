@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -30,6 +29,7 @@ class _PortfolioState extends State<Portfolio> {
           Gap(size.height * 0.05),
           const TitleA(
             title: Constants.portfolio,
+            fontSize: 45,
           ),
           Gap(size.height * 0.1),
           CarouselSlider.builder(

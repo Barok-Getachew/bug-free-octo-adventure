@@ -21,6 +21,7 @@ class MyServices extends StatelessWidget {
           children: [
             Gap(size.height * 0.05),
             const TitleA(
+              fontSize: 45,
               title: Constants.myService,
             ),
             Padding(
@@ -82,7 +83,7 @@ class MyServices extends StatelessWidget {
                   ),
                   Gap(size.height * 0.03),
                   SizedBox(
-                    height: 700,
+                    height: size.height * 0.7,
                     child: Image.asset(
                       "images/phone.png",
                       fit: BoxFit.cover,
@@ -154,7 +155,7 @@ class TextTitle extends StatelessWidget {
     return Text(
       title,
       style: GoogleFonts.plusJakartaSans(
-          fontSize: 20, color: Colors.white, fontWeight: FontWeight.w500),
+          fontSize: 25, color: Colors.white, fontWeight: FontWeight.w500),
       textAlign: TextAlign.left,
     );
   }
@@ -186,6 +187,21 @@ class TextDescriptionL extends StatelessWidget {
       style: GoogleFonts.plusJakartaSans(
           fontSize: 14, color: Colors.white, fontWeight: FontWeight.w300),
       textAlign: TextAlign.right,
+    );
+  }
+}
+
+class TextDescriptionC extends StatelessWidget {
+  final String description;
+  const TextDescriptionC({super.key, required this.description});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      description,
+      style: GoogleFonts.plusJakartaSans(
+          fontSize: 16, color: Colors.white, fontWeight: FontWeight.w300),
+      textAlign: TextAlign.justify,
     );
   }
 }

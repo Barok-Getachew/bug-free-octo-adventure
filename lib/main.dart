@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
-import 'package:personal_portfolio/screens/home/homefinal.dart';
-
-import 'package:personal_portfolio/screens/home/homescreen.dart';
+import 'package:personal_portfolio/screens/FinalScreen/final.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -45,15 +43,15 @@ class _WellcomeScreenState extends State<WellcomeScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(milliseconds: 3)).then((value) {
-      Get.to(const HomeFinal());
+      Get.to(const Final());
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       // backgroundColor: Colors.purple.shade100,
-      body: const Center(
+      body: Center(
         child: CircularProgressIndicator(),
       ),
     );
