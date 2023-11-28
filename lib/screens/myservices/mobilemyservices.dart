@@ -3,6 +3,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/instance_manager.dart';
+import 'package:personal_portfolio/controller/portfoliocontrolller.dart';
 import 'package:personal_portfolio/data/constants.dart';
 import 'package:personal_portfolio/screens/aboutme/title.dart';
 import 'package:personal_portfolio/screens/myservices/myservices.dart';
@@ -20,6 +23,7 @@ class _MyServiceMobileState extends State<MyServiceMobile> {
   int activeIndex = 0;
   @override
   Widget build(BuildContext context) {
+    Get.put(PortfolioController());
     final size = MediaQuery.of(context).size;
     return Container(
       width: double.infinity,
@@ -40,7 +44,7 @@ class _MyServiceMobileState extends State<MyServiceMobile> {
             itemCount: aray.length,
             itemBuilder: (context, index, realIndex) {
               return Container(
-                  width: size.width * 0.8,
+                  width: size.width * 0.5,
                   height: size.height * 0.2,
                   margin: const EdgeInsets.symmetric(
                     horizontal: 5,

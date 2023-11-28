@@ -1,12 +1,18 @@
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:js' as js;
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';
+
+import 'package:get/instance_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:personal_portfolio/controller/portfoliocontrolller.dart';
 import 'package:personal_portfolio/screens/aboutme/title.dart';
 import 'package:personal_portfolio/screens/home/circularcontanr.dart';
 
-import '../data/constants.dart';
+import '../../data/constants.dart';
 
 class PortfolioMbile extends StatefulWidget {
   const PortfolioMbile({super.key});
@@ -21,6 +27,7 @@ class _PortfolioMbileState extends State<PortfolioMbile> {
   int activeIndex = 0;
   @override
   Widget build(BuildContext context) {
+    Get.put(PortfolioController());
     final size = MediaQuery.of(context).size;
     return Container(
       alignment: Alignment.center,
@@ -39,7 +46,7 @@ class _PortfolioMbileState extends State<PortfolioMbile> {
           ),
           Gap(size.height * 0.1),
           CarouselSlider.builder(
-            itemCount: aray.length,
+            itemCount: Get.find<PortfolioController>().projectData.length,
             itemBuilder: (context, index, realIndex) {
               return Container(
                 width: size.width * 0.65,
@@ -50,7 +57,7 @@ class _PortfolioMbileState extends State<PortfolioMbile> {
                   color: const Color.fromRGBO(39, 50, 62, 1),
                   boxShadow: [
                     BoxShadow(
-                      color: Color.fromRGBO(39, 50, 62, 0.49).withOpacity(0.8),
+                      color: const Color.fromRGBO(39, 50, 62, 0.49).withOpacity(0.8),
                       spreadRadius: 6,
                       blurRadius: 25,
                       offset: const Offset(3.0, 3.0),
@@ -76,7 +83,9 @@ class _PortfolioMbileState extends State<PortfolioMbile> {
                           SizedBox(
                             width: size.width * 0.4,
                             child: Text(
-                              "UI/UX Design",
+                              Get.find<PortfolioController>()
+                                  .projectData[index]
+                                  .projectName,
                               style: GoogleFonts.plusJakartaSans(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
@@ -101,13 +110,19 @@ class _PortfolioMbileState extends State<PortfolioMbile> {
                               CircularContainer(
                                 screenWidth: size.width,
                                 screenHeight: size.height * 0.65,
-                                iconUrl: '',
+                                iconUrl: 'vectors/github.png',
+                                ontap: () => js.context.callMethod('open', [
+                                  Get.find<PortfolioController>()
+                                      .projectData[index]
+                                      .projectUrl,
+                                ]),
                               ),
                               Gap(size.height * 0.013),
                               CircularContainer(
                                 screenWidth: size.width,
                                 screenHeight: size.height * 0.65,
-                                iconUrl: '',
+                                iconUrl: 'vectors/linkedin.png',
+                                ontap: () {},
                               ),
                             ],
                           ),

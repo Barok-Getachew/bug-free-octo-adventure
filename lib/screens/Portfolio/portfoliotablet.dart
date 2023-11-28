@@ -1,12 +1,18 @@
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:js' as js;
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+
+import 'package:get/instance_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:personal_portfolio/controller/portfoliocontrolller.dart';
 import 'package:personal_portfolio/screens/aboutme/title.dart';
 import 'package:personal_portfolio/screens/home/circularcontanr.dart';
 
-import '../data/constants.dart';
+import '../../data/constants.dart';
 
 class PortfolioTablet extends StatefulWidget {
   const PortfolioTablet({super.key});
@@ -17,10 +23,11 @@ class PortfolioTablet extends StatefulWidget {
 
 class _PortfolioTabletState extends State<PortfolioTablet> {
   CarouselController controller = CarouselController();
-  List<int> aray = [1, 2, 3, 4, 5];
+
   int activeIndex = 0;
   @override
   Widget build(BuildContext context) {
+    Get.put(PortfolioController());
     final size = MediaQuery.of(context).size;
     return Container(
       alignment: Alignment.center,
@@ -34,12 +41,12 @@ class _PortfolioTabletState extends State<PortfolioTablet> {
             height: size.height * 0.045,
             child: const TitleA(
               title: Constants.portfolio,
-              fontSize: 35,
+              fontSize: 20,
             ),
           ),
           Gap(size.height * 0.1),
           CarouselSlider.builder(
-            itemCount: aray.length,
+            itemCount: Get.find<PortfolioController>().projectData.length,
             itemBuilder: (context, index, realIndex) {
               return Container(
                 width: size.width * 0.65,
@@ -50,7 +57,7 @@ class _PortfolioTabletState extends State<PortfolioTablet> {
                   color: const Color.fromRGBO(39, 50, 62, 1),
                   boxShadow: [
                     BoxShadow(
-                      color: Color.fromRGBO(39, 50, 62, 0.49).withOpacity(0.8),
+                      color: const Color.fromRGBO(39, 50, 62, 0.49).withOpacity(0.8),
                       spreadRadius: 6,
                       blurRadius: 25,
                       offset: const Offset(3.0, 3.0),
@@ -65,20 +72,22 @@ class _PortfolioTabletState extends State<PortfolioTablet> {
                       width: size.width * 0.4,
                       height: size.height * 0.6,
                     ),
-                    Container(
-                      width: size.width * 0.2,
+                    SizedBox(
+                      width: size.width * 0.22,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Gap(size.height * 0.11),
+                          Gap(size.height * 0.08),
                           SvgPicture.asset(
                             "vectors/icon1.svg",
-                            height: size.height * 0.04,
+                            height: size.height * 0.05,
                           ),
                           Gap(size.height * 0.04),
                           Text(
-                            "UI/UX Design",
+                            Get.find<PortfolioController>()
+                                .projectData[index]
+                                .projectName,
                             style: GoogleFonts.plusJakartaSans(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w500,
@@ -89,7 +98,9 @@ class _PortfolioTabletState extends State<PortfolioTablet> {
                             padding: EdgeInsets.symmetric(
                                 horizontal: size.width * 0.01),
                             child: Text(
-                              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt doloremque excepturi sit odit impedit, voluptas.",
+                              Get.find<PortfolioController>()
+                                  .projectData[index]
+                                  .projectDescripttion,
                               textAlign: TextAlign.justify,
                               style: GoogleFonts.plusJakartaSans(
                                   fontSize: 16,
@@ -97,20 +108,26 @@ class _PortfolioTabletState extends State<PortfolioTablet> {
                                   color: Colors.white),
                             ),
                           ),
-                          Gap(size.height * 0.1),
+                          Gap(size.height * 0.07),
                           Row(
                             children: [
                               Gap(size.height * 0.013),
                               BigCircularContainer(
                                 screenWidth: size.width,
                                 screenHeight: size.height * 0.65,
-                                iconUrl: '',
+                                iconUrl: 'vectors/github.png',
+                                ontap: () => js.context.callMethod('open', [
+                                  Get.find<PortfolioController>()
+                                      .projectData[index]
+                                      .projectUrl,
+                                ]),
                               ),
                               Gap(size.height * 0.013),
                               BigCircularContainer(
                                 screenWidth: size.width,
                                 screenHeight: size.height * 0.65,
-                                iconUrl: '',
+                                iconUrl: 'vectors/linkedin.png',
+                                ontap: () {},
                               ),
                             ],
                           ),

@@ -1,8 +1,10 @@
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+
+import 'package:get/instance_manager.dart';
+import 'package:personal_portfolio/controller/portfoliocontrolller.dart';
 import 'package:personal_portfolio/data/constants.dart';
 import 'package:personal_portfolio/screens/aboutme/title.dart';
 import 'package:personal_portfolio/screens/myservices/myservices.dart';
@@ -20,6 +22,7 @@ class _MyServiceTabletState extends State<MyServiceTablet> {
   int activeIndex = 0;
   @override
   Widget build(BuildContext context) {
+    Get.put(PortfolioController());
     final size = MediaQuery.of(context).size;
     return Container(
       width: double.infinity,
@@ -37,7 +40,7 @@ class _MyServiceTabletState extends State<MyServiceTablet> {
           ),
           Gap(size.height * 0.07),
           CarouselSlider.builder(
-            itemCount: aray.length,
+            itemCount: Get.find<PortfolioController>().services.length,
             itemBuilder: (context, index, realIndex) {
               return Container(
                   width: size.width * 0.4,
@@ -51,7 +54,7 @@ class _MyServiceTabletState extends State<MyServiceTablet> {
                     boxShadow: [
                       BoxShadow(
                         color:
-                            Color.fromRGBO(39, 50, 62, 0.49).withOpacity(0.8),
+                            const Color.fromRGBO(39, 50, 62, 0.49).withOpacity(0.8),
                         spreadRadius: 6,
                         blurRadius: 25,
                         offset: const Offset(3.0, 3.0),
@@ -63,23 +66,30 @@ class _MyServiceTabletState extends State<MyServiceTablet> {
                         EdgeInsets.symmetric(horizontal: size.width * 0.02),
                     child: Column(
                       children: [
-                        Gap(size.height * 0.11),
+                        Gap(size.height * 0.08),
                         SvgPicture.asset(
                           "vectors/icon1.svg",
                           height: size.height * 0.1,
                         ),
-                        Gap(size.height * 0.0),
-                        const TextTitle(title: "UI/UX Design"),
-                        Gap(size.height * 0.025),
-                        const TextDescriptionC(
-                            description:
-                                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt doloremque excepturi sit odit impedit, voluptas.")
+                        Gap(size.height * 0.02),
+                        TextTitle(
+                            title: Get.find<PortfolioController>()
+                                .services[index]),
+                        Gap(size.height * 0.02),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: size.width * 0.02),
+                          child: TextDescriptionC(
+                            description: Get.find<PortfolioController>()
+                                .service_details[index],
+                          ),
+                        )
                       ],
                     ),
                   ));
             },
             options: CarouselOptions(
-              height: size.height * 0.6,
+              height: size.height * 0.43,
               aspectRatio: 16 / 9,
               viewportFraction: 0.5,
               enlargeFactor: 0.2,

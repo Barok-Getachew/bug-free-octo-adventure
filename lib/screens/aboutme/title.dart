@@ -11,7 +11,7 @@ class TitleA extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Container(
       color: Colors.transparent,
-      width: size.width * 0.2,
+      width: size.width * 0.3,
       child: Stack(
         children: [
           Container(

@@ -45,6 +45,14 @@ dependencies:
   gradient_borders: ^1.0.0
   scroll_to_index: ^3.0.1
   scrollable_positioned_list: ^0.3.8
+  http: ^1.1.0
+  dio: ^5.3.4
+  animated_text_kit: ^4.2.2
+  url_launcher: ^6.2.1
+  flutter_file_downloader: ^1.1.4
+  side_menu_animation: ^1.1.0
+  loading_indicator: ^3.1.1
+  flip_card: ^0.7.0
 
 
 dev_dependencies:
@@ -75,6 +83,7 @@ flutter:
     - assets/animations/
     - assets/images/personImage.png
     - assets/vectors/blob.svg
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
